@@ -1,9 +1,9 @@
 <template>
   <div class = "titre">
     <h2> Liste des villes par pays</h2>
-    <div class="form-group">
+    <div>
       <label id = "countries" for="countries"></label>
-        <select id="countrySelector" class="form-control" @input="fetchCities">
+        <select id="countrySelector" @input="fetchCities">
           <option selected disabled hidden>Choisissez un pays</option>
           <option 
             v-for="country in data.allCountries"
@@ -48,7 +48,7 @@ function fetchCities() {
     .then((response) => response.json())
     .then((json) => {
       data.allCities = [];
-      let listCity = json._embedded.cities ;
+      let listCity = json._embedded.cities;
       for(let i=0; i<listCity.length;i++){
         data.allCities.push(listCity[i]);
       }
